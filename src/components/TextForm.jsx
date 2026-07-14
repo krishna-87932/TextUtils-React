@@ -14,6 +14,14 @@ function TextForm(props) {
         let newText = text.toLowerCase();
         setText(newText)
     }
+    const handelCapclick =()=>{
+        let newText = text.split(" ").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+        setText(newText)
+     }
+     const clearText =()=>{
+        let newText = "";
+        setText(newText)
+     }
 
     const [text, setText] = useState("")
     return (
@@ -21,8 +29,10 @@ function TextForm(props) {
             <div className="container mb-10 mt-5">
             <h3>{props.heading}</h3>
                 <textarea className="form-control" onChange={handelOnChange} placeholder='Put You Text Here..' value={text} id="myBox" rows="5"></textarea>
+                <button type="button" className="btn btn-danger mt-2 mx-2" onClick={clearText}>Clear Text</button>
                 <button type="button" className="btn btn-primary mt-2 mx-2" onClick={handelUpclick}>To Upper Case</button>
                 <button type="button" className="btn btn-primary mt-2 mx-2" onClick={handelLowclick}>To Lower Case</button>
+                <button type="button" className="btn btn-primary mt-2 mx-2" onClick={handelCapclick}>Capitalised Text</button>
             </div>
             <div className="container">
                 <hr />
